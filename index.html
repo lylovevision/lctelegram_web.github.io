@@ -1,1 +1,26 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Web App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <h1>Welcome to My Telegram Web App</h1>
+    <button id="connectWalletButton">Connect Wallet</button>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+
+        // 初始化 WebApp
+        tg.ready();
+
+        // 连接钱包按钮点击事件
+        document.getElementById('connectWalletButton').addEventListener('click', () => {
+            // 这里可以添加连接钱包的逻辑
+            window.location.href = 'https://tonhub.com/connect'; // 示例链接，可以替换成实际的钱包连接链接
+        });
+    </script>
+</body>
+</html>
