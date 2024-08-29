@@ -9,13 +9,38 @@
 <body>
     <h1>Welcome to My Telegram Web App</h1>
     <button id="connectWalletButton">Connect Wallet</button>
-
+    
+    <h1>Telegram Web App User Info</h1>
+    <div id="userInfo"></div>
+    
     <script>
         const tg = window.Telegram.WebApp;
 
         // 初始化 WebApp
         tg.ready();
 
+        // 获取用户信息
+        const user = tg.initDataUnsafe.user;
+
+        if (user) {
+            // 获取用户的基本信息
+            const userId = user.id;
+            const firstName = user.first_name;
+            const lastName = user.last_name || '';
+            const username = user.username || '';
+
+            // 在页面上显示用户信息
+            document.getElementById('userInfo').innerHTML = `
+                <p>User ID: ${userId}</p>
+                <p>First Name: ${firstName}</p>
+                <p>Last Name: ${lastName}</p>
+                <p>Username: ${username}</p>
+            `;
+        } else {
+            document.getElementById('userInfo').innerHTML = `<p>No user information available.</p>`;
+        }
+
+        
         // 连接钱包按钮点击事件
         document.getElementById('connectWalletButton').addEventListener('click', () => {
             // 这里可以添加连接钱包的逻辑
