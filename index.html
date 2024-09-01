@@ -13,19 +13,24 @@
     <h1>Telegram Web App User Info</h1>
     <div id="userInfo"></div>
     
-
+    <h1>上链支付 </h1>
+    <button id="MLPayButton">支付按钮在这呢</button>
     <script>
         const tg = window.Telegram.WebApp;
 
         // 初始化 WebApp
         tg.ready();
 
+        document.getElementById('MLPayButton').addEventListener('click', () => {
+            alert("点击了支付按钮")
+        });
+
         // 连接钱包按钮点击事件
         document.getElementById('connectWalletButton').addEventListener('click', () => {
             // 这里可以添加连接钱包的逻辑
             // window.location.href = "https://t.me/wallet?attach=wallet&mode=compact&startattach=tonconnect-v__2-id__07f1452780403406bbdd3d5d17d130b6a07a889b4bf83e49d42c078347ecea7a-r__--7B--22manifestUrl--22--3A--22https--3A--2F--2Fraw--2Egithubusercontent--2Ecom--2Flylovevision--2Flctelegram--5Fweb--2Egithub--2Eio--2Fmain--2Fpytonconnect--2Dmanifest--2Ejson--22--2C--22items--22--3A--5B--7B--22name--22--3A--22ton--5Faddr--22--7D--5D--7D"; // 示例链接，可以替换成实际的钱包连接链接
 
-            window.location.href = "https://t.me/wallet?attach=wallet&mode=compact&startattach=tonconnect-v__2-id__1a922232cc859d202b1dc888fd87dd13bfcbdbab5a19bf1af55b70a26eebc059-r__--7B--22manifestUrl--22--3A--22https--3A--2F--2Fraw--2Egithubusercontent--2Ecom--2Flylovevision--2Flctelegram--5Fweb--2Egithub--2Eio--2Fmain--2Fpytonconnect--2Dmanifest--2Ejson--22--2C--22items--22--3A--5B--7B--22name--22--3A--22ton--5Faddr--22--7D--5D--7D"
+            window.location.href = "https://t.me/wallet?attach=wallet&mode=compact&startattach=tonconnect-v__2-id__196608b617bb6d8456c1643c85c24421fdba08be9358191ec0c4f01fc2dbce10-r__--7B--22manifestUrl--22--3A--22https--3A--2F--2Fraw--2Egithubusercontent--2Ecom--2Flylovevision--2Flctelegram--5Fweb--2Egithub--2Eio--2Fmain--2Fpytonconnect--2Dmanifest--2Ejson--22--2C--22items--22--3A--5B--7B--22name--22--3A--22ton--5Faddr--22--7D--5D--7D"
         });
 
 
