@@ -22,9 +22,10 @@
         tg.ready();
 
         document.getElementById('MLPayButton').addEventListener('click', () => {
-            alert("点击了支付按钮 开始支付! - 2")
+            alert("点击了支付按钮 开始支付! - 3")
             // window.location.href = "https://t.me/wallet?start=pay-EQB9qvXvlQwNpefdkatMrofb4yRmcpYiwLHdpP6ahoDTd6Nx-0.0001"
-            window.location.href = "ton://transfer/EQB9qvXvlQwNpefdkatMrofb4yRmcpYiwLHdpP6ahoDTd6Nx?amount=100"
+            // window.location.href = "ton://transfer/EQB9qvXvlQwNpefdkatMrofb4yRmcpYiwLHdpP6ahoDTd6Nx?amount=100"
+            Telegram.WebApp.openTgLink('ton://transfer/EQB9qvXvlQwNpefdkatMrofb4yRmcpYiwLHdpP6ahoDTd6Nx?amount=100');
         });
 
         // 连接钱包按钮点击事件
