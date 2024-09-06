@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telegram Web App</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
 </head>
 <body>
     <h1>Welcome to My Telegram Web App</h1>
@@ -15,17 +16,39 @@
     
     <h1>上链支付 </h1>
     <button id="MLPayButton">支付按钮在这呢</button>
+
+    <h1>连接钱包 - 1</h1>
+    <div id="ton-connect">连接钱包</div>
+    <div id="connect-info"></div>
     <script>
+        const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+            manifestUrl: 'https://raw.githubusercontent.com/lylovevision/lctelegram_web.github.io/main/pytonconnect-manifest.json',
+            buttonRootId: 'ton-connect'
+        });
+
+        async function connectToWallet() {
+            const connectedWallet = await tonConnectUI.connectWallet();
+            // Do something with connectedWallet if needed
+            console.log(connectedWallet);
+
+            // 钱包信息
+            document.getElementById('userInfo').innerHTML = `<p>${connectedWallet}</p>`;
+
+        }
+
+        // Call the function
+        connectToWallet().catch(error => {
+            console.error("Error connecting to wallet:", error);
+        });
+
+
         const tg = window.Telegram.WebApp;
 
         // 初始化 WebApp
         tg.ready();
 
         document.getElementById('MLPayButton').addEventListener('click', () => {
-            alert("点击了支付按钮 开始支付! - 3")
-            // window.location.href = "https://t.me/wallet?start=pay-EQB9qvXvlQwNpefdkatMrofb4yRmcpYiwLHdpP6ahoDTd6Nx-0.0001"
-            // window.location.href = "ton://transfer/EQB9qvXvlQwNpefdkatMrofb4yRmcpYiwLHdpP6ahoDTd6Nx?amount=100"
-            Telegram.WebApp.openTgLink('ton://transfer/EQB9qvXvlQwNpefdkatMrofb4yRmcpYiwLHdpP6ahoDTd6Nx?amount=100');
+            alert("点击了支付按钮")
         });
 
         // 连接钱包按钮点击事件
@@ -33,7 +56,7 @@
             // 这里可以添加连接钱包的逻辑
             // window.location.href = "https://t.me/wallet?attach=wallet&mode=compact&startattach=tonconnect-v__2-id__07f1452780403406bbdd3d5d17d130b6a07a889b4bf83e49d42c078347ecea7a-r__--7B--22manifestUrl--22--3A--22https--3A--2F--2Fraw--2Egithubusercontent--2Ecom--2Flylovevision--2Flctelegram--5Fweb--2Egithub--2Eio--2Fmain--2Fpytonconnect--2Dmanifest--2Ejson--22--2C--22items--22--3A--5B--7B--22name--22--3A--22ton--5Faddr--22--7D--5D--7D"; // 示例链接，可以替换成实际的钱包连接链接
 
-            window.location.href = "https://t.me/wallet?attach=wallet&mode=compact&startattach=tonconnect-v__2-id__7b51be9602763305ab9d0a2604d0de36b3f1ccfc0f2d81065bf603c7fd582156-r__--7B--22manifestUrl--22--3A--22https--3A--2F--2Fraw--2Egithubusercontent--2Ecom--2Flylovevision--2Flctelegram--5Fweb--2Egithub--2Eio--2Fmain--2Fpytonconnect--2Dmanifest--2Ejson--22--2C--22items--22--3A--5B--7B--22name--22--3A--22ton--5Faddr--22--7D--5D--7D"
+            window.location.href = "https://t.me/wallet?attach=wallet&mode=compact&startattach=tonconnect-v__2-id__c7ec25717abbb963aeefe8e6ce5d1dfd0d92a1a24a42adb59da04afbc7334967-r__--7B--22manifestUrl--22--3A--22https--3A--2F--2Fraw--2Egithubusercontent--2Ecom--2Flylovevision--2Flctelegram--5Fweb--2Egithub--2Eio--2Fmain--2Fpytonconnect--2Dmanifest--2Ejson--22--2C--22items--22--3A--5B--7B--22name--22--3A--22ton--5Faddr--22--7D--5D--7D"
         });
 
 
