@@ -20,6 +20,9 @@
     <h1>连接钱包 - 1</h1>
     <div id="ton-connect">连接钱包</div>
     <div id="connect-info"></div>
+
+
+    <div id="user_all"></div>
     <script>
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://raw.githubusercontent.com/lylovevision/lctelegram_web.github.io/main/pytonconnect-manifest.json',
@@ -70,6 +73,7 @@
         const user = tg.initDataUnsafe.user;
 
         if (user) {
+              document.getElementById('user_all').innerHTML = `<p>${JSON.stringify(user)}</p>`;
             // 获取用户的基本信息
             const userId = user.id;
             const firstName = user.first_name;
