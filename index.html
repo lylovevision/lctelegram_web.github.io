@@ -25,24 +25,7 @@
             manifestUrl: 'https://raw.githubusercontent.com/lylovevision/lctelegram_web.github.io/main/pytonconnect-manifest.json',
             buttonRootId: 'ton-connect'
         });
-        // 监听钱包连接的状态变化
-        tonConnectUI.onStatusChange((wallet) => {
-            if (wallet) {
-                // 用户成功连接钱包
-                console.log("Wallet connected:", wallet);
-        
-                // 获取钱包地址（可选）
-                const walletAddress = wallet.account.address;
-                console.log("Wallet Address:", walletAddress);
-        
-                // 在这里可以执行一些逻辑，例如保存钱包地址、进行验证等
-                
-                // 连接成功后，重定向到小程序页面
-                window.location.href = 'https://lylovevision.github.io/lctelegram_web.github.io/';
-            } else {
-                console.log("Wallet disconnected or not connected");
-            }
-        });
+       
 
         async function connectToWallet() {
             const connectedWallet = await tonConnectUI.connectWallet();
