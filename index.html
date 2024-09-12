@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <h1>支付-1</h1>
+    <h1>支付-2</h1>
     <button id="pay-912">支付1ton</button>
 
     <h1>Welcome to My Telegram Web App</h1>
@@ -43,7 +43,7 @@
 
             try {
                 const result = tonConnectUI.sendTransaction(transaction);
-
+                console.log(JSON.stringify(result))
                 // you can use signed boc to find the transaction 
                 const someTxData = myAppExplorerService.getTransaction(result.boc);
                 alert('交易已经成功发送', someTxData);
