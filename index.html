@@ -42,10 +42,10 @@
             }
 
             try {
-                const result = await tonConnectUI.sendTransaction(transaction);
+                const result = tonConnectUI.sendTransaction(transaction);
 
                 // you can use signed boc to find the transaction 
-                const someTxData = await myAppExplorerService.getTransaction(result.boc);
+                const someTxData = myAppExplorerService.getTransaction(result.boc);
                 alert('交易已经成功发送', someTxData);
             } catch (e) {
                 console.error(e);
