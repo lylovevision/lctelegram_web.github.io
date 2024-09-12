@@ -43,7 +43,11 @@
 
             try {
                 const result = tonConnectUI.sendTransaction(transaction);
-                console.log(JSON.stringify(result))
+                console.log("=====================================================");
+                console.log(Sting(result));
+                console.log(JSON.stringify(result));
+                console.log("======================================================")
+                debugger; 
                 // you can use signed boc to find the transaction 
                 const someTxData = myAppExplorerService.getTransaction(result.boc);
                 alert('交易已经成功发送', someTxData);
