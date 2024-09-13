@@ -6,6 +6,7 @@
     <title>Telegram Web App</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+    <script src="https://unpkg.com/tonweb@0.0.41/dist/tonweb.js"></script>
     
 </head>
 <body>
@@ -57,7 +58,26 @@
             }
         });
 
+        async function getCellHash(bocBase64){
+            // 使用 TONWeb 的 utils 和 boc API
+            const tonweb = new TonWeb();
+            const { utils, boc } = tonweb;
 
+            // 将 Base64 编码的 BOC 数据转换为 Uint8Array
+            const bocBytes = utils.base64ToBytes(bocBase64);
+
+            // 从 BOC 数据中解析出一个 Cell
+            const cell = boc.Cell.oneFromBoc(bocBytes);
+
+            // 计算 Cell 的哈希值
+            const cellHash = await cell.hash();
+
+            // 将哈希值转换为十六进制字符串
+            const cellHashHex = utils.bytesToHex(cellHash);
+
+            console.log('Cell hash (hex):', cellHashHex);
+            return cellHashHex;
+        }
 
         document.getElementById('pay-912').addEventListener('click', async () => {
             const transaction = {
@@ -76,10 +96,14 @@
 
                 console.log(JSON.stringify(result))
                 // you can use signed boc to find the transaction 
-                const someTxData = await myAppExplorerService.getTransaction(result.boc);
+                // const someTxData = await myAppExplorerService.getTransaction(result.boc);
 
-                console.log(String(someTxData))
-
+                // console.log(String(someTxData)) #
+                const gch =  getCellHash(result.boc);
+                console.log("-------------------")
+                console.log(gch)
+                console.log(String(gch))
+                console.log("-------------------")
                 alert('交易已经成功发送', someTxData);
             } catch (e) {
                 console.error(e);
