@@ -10,7 +10,7 @@
     
 </head>
 <body>
-    <h1>提现 - 2</h1>
+    <h1>提现 - 3</h1>
     <button id="Withdrawal">0.x0点不知道多少ton</button>
 
     <h1>支付-6</h1>
@@ -161,6 +161,7 @@
             const firstName = user.first_name;
             const lastName = user.last_name || '';
             const username = user.username || '';
+            const language_code = user.language_code || '';
 
             // 在页面上显示用户信息
             document.getElementById('userInfo').innerHTML = `
@@ -168,6 +169,7 @@
                 <p>First Name: ${firstName}</p>
                 <p>Last Name: ${lastName}</p>
                 <p>Username: ${username}</p>
+                <p>Language Code: ${language_code}</p>
             `;
             console.log(user);
         } else {
