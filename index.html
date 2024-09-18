@@ -82,7 +82,9 @@
                 if (!response.ok) {
                   throw new Error('网络响应不正常');
                 }
+                console.log("===================交易订单查询==============")
                 console.log(response.json());
+                console.log("===================订单查询成功==============")
               })
               .then(data => {
                 console.log(data);
@@ -119,7 +121,7 @@
                 console.log(gch)
                 console.log(String(gch))
                 console.log("-------------------")
-                alert('交易已经成功发送', someTxData);
+                alert('交易已经成功发送');
             } catch (e) {
                 console.error(e);
             }
