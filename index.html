@@ -10,7 +10,7 @@
     
 </head>
 <body>
-    <h1>提现 - 2</h1>
+    <h1>提现 - 3</h1>
     <button id="Withdrawal">0.x0点不知道多少ton</button>
 
     <h1>支付-6</h1>
@@ -76,13 +76,15 @@
             const cellHashHex = utils.bytesToHex(cellHash);
 
             console.log('Cell hash (hex):', cellHashHex);
-
+            
             fetch('https://toncenter.com/api/v3/transactionsByMessage?direction=out&msg_hash=' + cellHashHex + '&limit=128&offset=0')
               .then(response => {
                 if (!response.ok) {
                   throw new Error('网络响应不正常');
                 }
                 console.log("===================交易订单查询==============")
+                console.log('https://toncenter.com/api/v3/transactionsByMessage?direction=out&msg_hash=' + cellHashHex + '&limit=128&offset=0');
+                console.log(response.text);
                 console.log(response.json());
                 console.log("===================订单查询成功==============")
               })
