@@ -10,7 +10,7 @@
     
 </head>
 <body>
-    <h1>提现 - 3</h1>
+    <h1>提现 - 2</h1>
     <button id="Withdrawal">0.x0点不知道多少ton</button>
 
     <h1>支付-6</h1>
@@ -76,6 +76,21 @@
             const cellHashHex = utils.bytesToHex(cellHash);
 
             console.log('Cell hash (hex):', cellHashHex);
+
+            fetch('https://toncenter.com/api/v3/transactionsByMessage?direction=out&msg_hash=' + cellHashHex + '&limit=128&offset=0')
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('网络响应不正常');
+                }
+                console.log(response.json());
+              })
+              .then(data => {
+                console.log(data);
+              })
+              .catch(error => {
+                console.error('您的获取操作出现问题:', error);
+              });
+
             return cellHashHex;
         }
 
@@ -161,7 +176,6 @@
             const firstName = user.first_name;
             const lastName = user.last_name || '';
             const username = user.username || '';
-            const language_code = user.language_code || '';
 
             // 在页面上显示用户信息
             document.getElementById('userInfo').innerHTML = `
@@ -169,9 +183,7 @@
                 <p>First Name: ${firstName}</p>
                 <p>Last Name: ${lastName}</p>
                 <p>Username: ${username}</p>
-                <p>Language Code: ${language_code}</p>
             `;
-            console.log(user);
         } else {
             document.getElementById('userInfo').innerHTML = `<p>No user information available.</p>`;
         }
