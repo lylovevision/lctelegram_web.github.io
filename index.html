@@ -25,7 +25,7 @@
     <h1>上链支付 </h1>
     <button id="MLPayButton">支付按钮在这呢</button>
 
-    <h1>连接钱包 - 2</h1>
+    <h1>连接钱包 - 3</h1>
     <div id="ton-connect">连接钱包</div>
     <div id="connect-info"></div>
 
@@ -129,12 +129,13 @@
             }
         });
 
-
-        const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-            manifestUrl: 'https://raw.githubusercontent.com/lylovevision/lctelegram_web.github.io/main/pytonconnect-manifest.json',
-            buttonRootId: 'ton-connect'
+        document.getElementById('ton-connect').addEventListener('click', async () => {
+            const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+                manifestUrl: 'https://raw.githubusercontent.com/lylovevision/lctelegram_web.github.io/main/pytonconnect-manifest.json',
+                buttonRootId: 'ton-connect'
+            });
         });
-
+        
         async function connectToWallet() {
             const connectedWallet = await tonConnectUI.connectWallet();
             // Do something with connectedWallet if needed
